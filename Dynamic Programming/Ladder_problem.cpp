@@ -14,18 +14,14 @@ int waysTD(int *dp, int n){             // Top Down Approach
         dp[n]=1;
         return 1;
     }
-    
     if(n<0)
-        return 0;                      // handling -ve's
-        
+        return 0;                      // handling -ve's   
     if(dp[n]>0)                        // already calculated subproblem..
         return dp[n];
-    
     dp[n]=waysTD(dp,n-1)+waysTD(dp,n-2)+waysTD(dp,n-3);
                                        // non-calculated problem.
     for(int i=0;i<n+1;i++)             // vizualization code..
-        cout<< dp[i] << " ";
-        
+        cout<< dp[i] << " ";   
     cout << endl;    
     return dp[n];
 }
