@@ -33,24 +33,25 @@ int main(){
     cin >> t;
     int arr[4]={0,0,0,0};
     while(t--){
-        cin >> a >> b;
-        if(b==0){
+        cin >> a >> b;                   
+        // a and b cannot be 0 at the same time but can 0 differently..
+        if(b==0){                        // edge case if power is 0.
             cout << 1 <<"\n";
             continue;
         }
-        if(a==0){
+        if(a==0){                        // edge case if base is 0.
             cout << 0 << "\n"; 
             continue;
         }
-        x=a;
+        x=a;                             // for all other case pattern is matched with the array of 4.Since after every 4 number pattern repeats...
         for(i=0;i<4;i++){
             x=(x%10*a)%10;
             arr[i]=x;
         }
-        b=(b-1)%4;
-        if(b==0)
+        b=(b-1)%4;                       // since x=a  =>  one number is already taken that's why (b-1). 
+        if(b==0)                         // without this element at index 4 is not reachable if (b-1) is divisible by 4 which gives -1.
             b=4;
-        cout << arr[b-1] <<"\n";
+        cout << arr[b-1] <<"\n";         
     }
     return 0;
 }
