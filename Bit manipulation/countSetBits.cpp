@@ -31,10 +31,7 @@ using namespace std;
 int countSetBits(int n){
     if(n == 0 || n == 1)
         return n;
-    if(n % 2 == 0)    
-        return countSetBits(n/2);
-    else
-         return countSetBits(n/2)+1;
+    return countSetBits(n/2) + (n % 2);
 }
 */
 /*
