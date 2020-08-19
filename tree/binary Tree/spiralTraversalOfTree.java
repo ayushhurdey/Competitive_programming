@@ -70,3 +70,12 @@ class Spiral
            }
       }
 }
+
+/*
+Whenever counter = 0   => level is over.
+  if leftToRight = true;
+      print from left to right
+  else
+      print from right to left.
+  counter = size(Queue); 
+*/
