@@ -29,7 +29,7 @@ void merge(int arr[], int leftStart, int rightEnd){
  }
 
 void mergeSort(int arr[], int leftStart, int rightEnd){
-     // base case on single element
+     // base case on single element or to divide there  should be atlest two elements...
      if(leftStart >= rightEnd) 
         return;
      int middle = (leftStart + rightEnd) / 2;
