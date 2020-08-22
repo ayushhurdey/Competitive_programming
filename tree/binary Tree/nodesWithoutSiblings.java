@@ -1,5 +1,5 @@
 /*
-Print all nodes that don't have sibling 
+Print all nodes that don't have sibling in sorted order.
 Given a Binary Tree of size N, such that all nodes have distinct values, print all the nodes which don't have a sibling node in sorted order. If all nodes have a sibling node then print -1 .
 Input:
 First line of input contains the number of test cases T. For each test case, there will be only a single line of input which is a string representing the tree as described below: 
