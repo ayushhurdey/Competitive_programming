@@ -52,16 +52,15 @@ class Tree
         preOrder(node.right);
     }
     
-	void printSibling(Node node)
-	{
-		// Your code here
+    void printSibling(Node node){
+	    // Your code here
 	    ts.clear();
-		preOrder(node); 
-		Iterator iterator = ts.iterator();
-        while (iterator.hasNext())
-            System.out.print(iterator.next() + " ");
-        if(ts.size() == 0)
-            System.out.print("-1");    
-        //System.out.println();    
-	}
+	    preOrder(node); 
+	    Iterator iterator = ts.iterator();
+            while (iterator.hasNext())
+                 System.out.print(iterator.next() + " ");
+            if(ts.size() == 0)
+                 System.out.print("-1");    
+           //System.out.println();    	
+    }
 }
