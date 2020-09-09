@@ -42,3 +42,28 @@ class GFG
 	    }
 	 }
 }
+
+
+// for handling Biginteger cases
+import java.util.*;
+import java.lang.*;
+import java.math.BigInteger;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	    int tests,intNum;
+	    BigInteger num;
+	    Scanner scan = new Scanner(System.in);
+	    tests = scan.nextInt();
+	    while(tests-- > 0){
+		intNum = scan.nextBigInteger().intValue();
+		intNum = (intNum % 10000);
+		if((intNum & 7) == 0)
+		    System.out.println("1");
+		else
+		    System.out.println("-1");
+	    }
+	 }
+}
