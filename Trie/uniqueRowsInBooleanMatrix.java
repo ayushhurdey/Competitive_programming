@@ -34,7 +34,6 @@ Constraints:
 
 class GfG
 {
-    //static ArrayList<Integer> list;
     static ArrayList<ArrayList<Integer>> result;
     
     public static ArrayList<ArrayList<Integer>> uniqueRow(int a[][],int r, int c)
