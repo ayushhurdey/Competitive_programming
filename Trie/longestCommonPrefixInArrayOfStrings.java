@@ -107,17 +107,17 @@ input: geeksfor, geek, geeks, geezer                     input : ab, abc, abcd, 
                   /                                               |
                  e                                                b <- true  ==> first encounter of true will return longest common prefix
                 /                                                 |
-               e                                                  c <- true
+               e   -> have more than one child                    c <- true
               /  \                                                |
-             k    z                                               d <- true
+    true ->  k    z                                               d <- true
             /      \                                              |
-           s         e                                            e <- true
+  true ->  s         e                                            e <- true
           /           \                                        
-         f             r
+         f             r  <- true
         /
        o
       /
-     r
+     r -> true
      
  longest common prefix : gee
  
