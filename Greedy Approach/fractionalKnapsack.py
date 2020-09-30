@@ -1,6 +1,6 @@
-/*
+'''
 Fractional Knapsack Problem
-*/
+'''
 
 
 class ItemValue: 
