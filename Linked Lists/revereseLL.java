@@ -1,6 +1,6 @@
 /*
 Reverse a linked list 
-Easy Accuracy: 48.93% Submissions: 100k+ Points: 2
+
 Given a linked list of N nodes. The task is to reverse this list.
 
 Example 1:
