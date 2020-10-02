@@ -81,3 +81,9 @@ class GfG
     }
 }
 
+/*
+1. First visit nth node from the beginning using fastPointer.
+2. then start another pointer from beginning again using slowPointer.
+3. then iterate over LL till fastPointer is not null by increamenting both pointers.
+4. the slowPointer is now pointing to nth node from last.
+*/
