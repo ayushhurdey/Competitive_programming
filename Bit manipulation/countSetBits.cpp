@@ -26,7 +26,7 @@ Output:
 #include <iostream>
 using namespace std;
 /*
-// 3 possible solutions...
+// 4 possible solutions...
 
 int countSetBits(int n){
     if(n == 0 || n == 1)
@@ -44,7 +44,20 @@ int countSetBits(int n){
     return oneCount;
 }
 */
+/*
+// best method - O(No of setBits)
+int setBits(int N){
+        // code here
+        int count = 0;
+        while(N != 0){
+            N = N & (N - 1);
+            count++;
+        }
+        return count;
+ }
+ */
 
+// O(no of total bits)
 int countSetBits(int n){
     int oneCount = 0;
     while(n >= 1){
