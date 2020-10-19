@@ -78,3 +78,12 @@ class LinkedList{
         return dummyNode.next;
     }
 }
+
+/*
+Explanation:
+     Create a dummy node that points to the smaller head initially(out of two LL) and 
+     a lastPointer to attach the next greater element node to the next of lastPointer.
+
+TIP: Is is always beneficial to take into consideration the use of dummyNode in LL 
+     to make things simple, short and fast.
+*/
