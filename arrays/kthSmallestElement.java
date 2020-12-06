@@ -82,3 +82,67 @@ class GFG
 }
 // O(n + klogn) solution
 // n = size of array. & k = kth element in array.
+
+
+
+
+// Quick Select Method:
+// Time Complexity: Average : O(n), but worst: O(n^2) even worse than min heap or max heap method.
+ class Solution{  
+    private static int partition(int[] arr, int left, int right){
+        int pivot = right;
+        int back = left;
+        int temp;
+        
+        for(int j = left; j <= right; j++){
+            if(arr[j] < arr[right]){
+                temp = arr[j];
+                arr[j] = arr[back];
+                arr[back] = temp;
+                back++;
+            }
+        }
+        
+        temp = arr[right];
+        arr[right] = arr[back];
+        arr[back] = temp;
+        
+        
+        return back;
+    }
+    
+    // using Quick select Algorithm
+    public static int kthSmallest(int[] arr, int l, int r, int k) 
+    { 
+        //Your code here
+        int pivot = partition(arr,l,r);
+        
+        if(pivot == k-1)
+            return arr[pivot];
+        else if(pivot > k-1)
+            return kthSmallest(arr, l, pivot-1, k);
+        else
+            return kthSmallest(arr, pivot + 1, r, k);
+    }  
+    
+   public static void main (String[] args){
+	 //code
+	 Scanner scan = new Scanner(System.in);
+	 int tests;
+	 int n, k;
+	 int [] arr;
+	 tests = Integer.parseInt(scan.nextLine());
+	 
+	 while(tests-- > 0){
+	     n = Integer.parseInt(scan.nextLine());
+	     arr = new int[n];
+	     String str[] = scan.nextLine().split(" ");
+	     for(int i = 0; i < n; i++)
+	         arr[i] = Integer.parseInt(str[i]);
+	     k = Integer.parseInt(scan.nextLine());
+	     int kthMinimum = kthSmallest(arr,k);
+	     System.out.println(kthMinimum);
+	 }
+   }
+
+ }
