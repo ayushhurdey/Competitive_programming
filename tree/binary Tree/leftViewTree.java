@@ -9,9 +9,9 @@ Left view of following tree is 1 2 4 8.
 
           1
        /     \
-     2        3
-   /     \    /    \
-  4     5   6    7
+     2         3
+   /     \    /  \
+  4     5   6     7
    \
      8   
 
@@ -70,3 +70,9 @@ class Tree
     }
 }
 
+/*
+Hint: Draw Horizontal levels. Starting with -1(i.e null level).
+      Maintain maxLevelAchievedSoFar to track the maximum level achieved
+        that will be helpful when right subtree's height > left subtree height.
+        Increase level each time you traverse to left or right subtree.
+*/
