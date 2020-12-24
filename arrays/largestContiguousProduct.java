@@ -1,6 +1,5 @@
 /*
 Largest product
-Basic Accuracy: 30.72% Submissions: 3547 Points: 1
 
 Given an array consisting of N positive integers, and an integer k.
 You have to find the maximum product of k contiguous elements in the
@@ -59,3 +58,13 @@ class GfG{
         return product;
     }
 }
+
+
+/*
+initially calculate first k elements product
+starting from kth index of array.
+	calculating currentProduct / A[lastNumberInx] * A[i]  (i means current)
+	then, move lastNumberInx and i by one forward, and updating product if 
+	currentProduct > product and so on..
+	finally product will get the answer.
+*/
