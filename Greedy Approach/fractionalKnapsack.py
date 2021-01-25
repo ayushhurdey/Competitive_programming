@@ -8,7 +8,7 @@ class ItemValue:
         self.w = w 
         self.v = v 
         self.ind = index 
-        self.cost = v // w 
+        self.cost = v / w 
   
     def __lt__(self, other): 
         return self.cost < other.cost 
