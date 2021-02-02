@@ -36,6 +36,9 @@ Constraints:
  
 */
 
+⚠⚠ This solution works only if it is guaranteed
+that the solution to the problem exists.
+
 class Tree
 {
 
