@@ -90,8 +90,8 @@ class Solution
     
     void DFS(char[][] M, int i, int j){
         
-        int[] rowNbr = {-1,-1,0,1,1,1,0,-1};
-        int[] colNbr = {0,1,1,1,0,-1,-1,-1};
+        int[] rowNbr = {-1,-1,0,1,1,1,0,-1};    // refer direction from summary below 
+        int[] colNbr = {0,1,1,1,0,-1,-1,-1};    // starting from top.
         
         visited[i][j] = true;
         
@@ -115,3 +115,23 @@ class Solution
         System.out.println("\n");
     }
 }
+
+
+/*
+SUMMARY:
+
+Neighbour Count in DFS:
+
+        LEFT-TOP           TOP         RIGHT-TOP
+
+            (i-1, j-1)   (i-1, j)    (i-1, j+1)
+                   \        |       /
+                    \       |      /
+ LEFT   (i, j-1)  ----    (i,j)   ----  (i, j+1)    RIGHT
+                    /       |      \
+                   /        |       \
+            (i+1, j-1)   (i+1, j)   (i+1, j+1)   
+
+       LEFT-BOTTOM        BOTTOM       RIGHT-BOTTOM     
+        
+*/
