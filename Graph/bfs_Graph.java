@@ -96,6 +96,36 @@ class Solution
     }
 }
 
+// more descriptive code version than the upper code
+class Solution
+{
+    //Function to return Breadth First Traversal of given graph.
+    public ArrayList<Integer> bfsOfGraph(int V,ArrayList<ArrayList<Integer>> adj)
+    {
+        // Code here
+        ArrayList<Integer> list = new ArrayList<>();
+        LinkedList<Integer> queue = new LinkedList<>();
+        boolean[] visited = new boolean[V];
+        
+        queue.add(0);
+        visited[0] = true;
+        
+        while(queue.size() != 0){
+            int top = queue.poll();
+            list.add(top);
+            
+            adj.get(top).forEach(elem -> {
+                if(!visited[elem]){
+                    visited[elem] = true;
+                    queue.add(elem);
+                }
+            });
+        }
+        
+        return list;
+        
+    }
+}
 
 
 // For Disconnnected GRAPHS
