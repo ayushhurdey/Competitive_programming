@@ -103,4 +103,19 @@ class GfG
 /*
 In the second method first traverse the list for first k(k is index from the last of LL) from the beginning elements and
 when it reaches (K+1)th node from the beginning initiaize (slowptr = head) the traverse the loop until (fastptr != null).  
+    
+                                       k th from end
+                                       ^
+    |<---------------------------------|----------->|
+    |<---------(l-k)------------------>|<----k----->|
+    |<-----k----->|<-------------(l-k)------------->|
+                  |
+                  when we are kth from the beginning
+                  if we start two pointers, one from head(slowPtr)
+                  and another from kth from beginning(current position)
+                  then when current reaches end of the list
+                  the head will be standing at k th from the last of list i.e.
+                  both will travel (l-k) distance and distance left for slowPtr
+                  when current will finish will be k from the last.
+
 */
