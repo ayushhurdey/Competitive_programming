@@ -25,6 +25,31 @@ Output: 4
 
 
 
+
+/*-------------Simple Approach (NOT efficient)----------------*/
+
+//  O(n*h) solution
+
+public int dimaeter(TreeNode root){
+		if(root == null)
+				return 0;
+		int lHeight = height(root.left);
+		int rHeight = height(root.right);
+		int lDiameter = diameter(root.left);
+		int rDiameter = diameter(root.right);
+		return max(lHeight+rHeight +1 , max(lDiameter, rDiameter));
+}
+
+/*
+For a normal balanced binary tree T(n) = O(nlogn)
+For a right skewed binary tree T(n) = O(n*n) = O(n^2)
+Problem with this solution is it calculates height twice.
+*/
+
+
+
+/*------------------Better Appraoch--------------------*/
+
 class Tree {
     /* Complete the function to get diameter of a binary tree */
     int maxDiam;
@@ -48,3 +73,5 @@ class Tree {
         return maxDiam;
     }
 }
+
+
