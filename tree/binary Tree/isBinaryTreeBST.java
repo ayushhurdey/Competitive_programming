@@ -90,3 +90,73 @@ Beware of test cases like
  Also in this solution it has been considered that all values will be distinct for a binary tree to be BST.
  A more optimised solution will be if we do no more recursion after we found at any point that tree is not BST.
 */
+
+
+
+
+
+////////////// Smaller Version of same solution above ////////////////////
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    TreeNode prev = null;
+    public boolean isValidBST(TreeNode root) {
+        if( root == null)
+            return true;
+        boolean left = isValidBST(root.left);
+        
+        if(!left)
+            return false;
+        if(prev != null && prev.val >= root.val)
+            return false;
+        
+        prev = root;
+        boolean right = isValidBST(root.right);
+        
+        return left && right;
+    }
+}
+
+
+
+
+//                   ✔✔✔✔ 👍👍
+//////////////// Even smaller Version  ///////////////
+
+public class Solution {
+    public boolean isValidBST(TreeNode root) {
+        return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+    
+    public boolean isValidBST(TreeNode root, long minVal, long maxVal) {
+        if (root == null) return true;
+        if (root.val >= maxVal || root.val <= minVal) return false;
+        return isValidBST(root.left, minVal, root.val) && isValidBST(root.right, root.val, maxVal);
+    }
+}
+
+/* Basically what it is doing is recursively iterating over the tree while 
+   defining interval <minVal, maxVal> for each node which value must fit in.
+   
+   For each node in BST on left subtree -> min value is INTEGER_MIN
+                                         & max value is root of that node
+   Similarly for each node on the right -> min value is root of that node.
+                                         & max value is INTEGER_MAX
+   And obviously, for the tree root node, min -> INTEGER_MIN & max -> INTEGER_MAX
+   
+   if any node violates these two properties is violates BST properties also.
+*/
