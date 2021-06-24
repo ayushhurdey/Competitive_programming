@@ -103,3 +103,44 @@ class Solution
         stack.push(currentNode);
     }
 }
+
+
+
+
+
+
+//---------- Kahn's Algorithm (BFS)----------
+
+class Solution{
+    //Function to return list containing vertices in Topological order. 
+    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
+    {
+        // add your code here
+        int[] topoSorted = new int[V];
+        int[] indegree = new int[V];
+        
+        for(int i = 0; i < V; i++){
+            for(int each: adj.get(i))
+                indegree[each]++;
+        }
+        
+        Queue<Integer> queue = new LinkedList<>();
+        for(int i = 0; i < V; i++){
+            if(indegree[i] == 0) queue.add(i);
+        }
+        
+        int index = 0;
+        while(!queue.isEmpty()){
+            int top = queue.poll();
+            topoSorted[index++] = top;
+            
+            for(int adjacent: adj.get(top)){
+                indegree[adjacent]--;
+                if(indegree[adjacent] == 0)
+                    queue.add(adjacent);
+            }
+        }
+        
+        return topoSorted;
+    }
+}
