@@ -97,4 +97,49 @@ APPROACH: Make a max-heap of size k in which top will give the maximum
           
           finally => n-size array is divide into k-parts => total n/k parts
                   => n/k(logk + k) => n/k(k) => O(n) => T.C. of this algorithm 
+                   Space Complexity -> O(k)
+*/
+
+
+
+
+// Better Approach wrt Time complexity -> O(n) but still better than previous one.
+// Space Complexity -> O(2n) -> O(n)
+
+class Solution {
+    public int[] maxSlidingWindow(int[] arr, int k) {
+        int n = arr.length;
+        int[] leftMax = new int[n];
+        int[] rightMax = new int[n];
+        
+        leftMax[0] = arr[0];
+        rightMax[n-1] = arr[n-1];
+        
+        for(int i = 1; i < n; i++){
+            leftMax[i] = (i % k == 0) ? arr[i] : Math.max(leftMax[i-1], arr[i]);
+        }// whenever i is divisible by k => window has changed
+        
+        for(int j = n-2; j >= 0 ; j--){
+            rightMax[j] = (j % k == 0) ? arr[j] : Math.max(rightMax[j+1], arr[j]);
+        }// whenever j is divisible by k => window has changed
+        
+        int[] slidingMax = new int[n-k+1];
+        for(int i = 0, j = 0; i + k <= n; i++){
+            slidingMax[j++] = Math.max(rightMax[i], leftMax[i+k-1]);
+        }
+        
+        return slidingMax;
+    }
+}
+
+/*
+APPROACH: 
+        - Calculate left max array.
+        - Calculate right max array.
+        - then calculate sliding window maximum & for that
+          in each rightmax window leftmost element is maximum,
+          but in each leftMax window rightmost element is maximum,
+          So, in each of the sliding window it will have the maximum
+          either one from leftmost of rightMax window, rightmost of 
+          leftMax window.
 */
