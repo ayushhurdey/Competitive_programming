@@ -93,4 +93,16 @@ class Solution {
     }
 }
 
-
+/*
+APPROACH: 
+    - Until left index doesn't cross right index
+        -  Whenever left height is less than the right height:
+              the leftMax will be responsible for trapping water
+               -  whenever the leftMax < current Height
+                     update leftMax with current Height.
+               -  else trap water
+           else the rightMax will be responsible.
+              -  whenever the rightMax < current Height
+                     update rightMax with current Height.
+              -  else trap water
+*/
