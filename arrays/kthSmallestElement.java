@@ -140,7 +140,7 @@ class GFG
 	     for(int i = 0; i < n; i++)
 	         arr[i] = Integer.parseInt(str[i]);
 	     k = Integer.parseInt(scan.nextLine());
-	     int kthMinimum = kthSmallest(arr,k);
+	     int kthMinimum = kthSmallest(arr, 0, n - 1, k);
 	     System.out.println(kthMinimum);
 	 }
    }
