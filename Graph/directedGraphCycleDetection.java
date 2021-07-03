@@ -82,7 +82,11 @@ class Solution
 }
 
 
-/*Two visited nodes are required to keep track of visited nodes and visited by BFS nodes (beacuse
+/*Two visited nodes are required to keep track of visited nodes and visited by DFS nodes (beacuse
   it is possible that a node can be reached during DFS from multiple paths but there is no cycle 
-  in that case but if we take only one visited array it will consider it as cycle which is wrong.)*/
+  in that case but if we take only one visited array it will consider it as cycle which is wrong.)
+  
+  The way DFS works is it makes a tree like structure while visiting each node(in depth) and we
+  detect a cycle if there is any back edge from any node to any of its ancestor.
+*/
 
