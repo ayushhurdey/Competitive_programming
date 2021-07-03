@@ -115,3 +115,9 @@ class Solution
     }
 }
 
+/*
+APPROACH: When there ia cycle in the graph, it is guaranteed that any one node
+          will be added in queue by two differnt nodes and one of them will mark
+          that common node as visisted & when it occurs again in queue we detect 
+          a cycle.
+*/
