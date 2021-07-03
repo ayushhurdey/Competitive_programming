@@ -89,10 +89,14 @@ class Solution {
                     queue.add(adj);
                     color[adj] = 1 - color[top];
                 }
-                else if(color[adj] == color[top])
+                else if(color[adj] == color[top])    // if already colored but color of top and current node is same
                     return false;
             }
         }
         return true;
     }
 }
+
+
+// if a graph contains a cycle with odd no. of nodes then bipartite graph is not possible.
+// But if a graph has a cycle with even no. of nodes then it may or may not be bipartite.
