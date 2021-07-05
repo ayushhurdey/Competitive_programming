@@ -54,7 +54,7 @@ class Solution {
     }
     
     private void dfs(char[][] grid, int m ,int n, int i, int j){
-        grid[i][j] = 0;   // marking a grid that is visited so that it is not visited again.
+        grid[i][j] = 0;   // marking a grid with 0 that is visited so that it is not visited again.
         
         for(int k = 0; k < 4; k++){
             if(isSafe(grid, i + di[k], j + dj[k], m, n)){
@@ -83,5 +83,5 @@ class Solution {
 
 
 /*
-Approach: Simply count the no of disconnected components in the given graph using dfs. 
+APPROACH: Simply count the no of disconnected components in the given graph using dfs. 
 */
