@@ -122,3 +122,14 @@ class Solution
         return weights;
     }
 }
+
+
+
+/*
+The above approach works both in directed and undirected graph.
+
+In an undirected graph visited array is required beacuse
+there is no need to visit a vertex whose minimum minimum path
+has already been calculated. Since Dijkastra is greedy approach
+it takes best first and the move forward for next best.
+*/
