@@ -71,10 +71,12 @@ class Solution {
     public int orangesRotting(int[][] grid) {
         int rows = grid.length;
         int cols = grid[0].length;
-        int totalTime = Integer.MAX_VALUE;
         Queue<Pair> queue = new LinkedList<>();
         int countFresh = 0;
         
+        
+        // counting fresh oranges &
+        // adding rottens to queue
         for(int i = 0; i < rows; i++){
             for(int j =0; j < cols; j++){
                 if(grid[i][j] == 2){
@@ -87,26 +89,30 @@ class Solution {
             }
         }
         
+        // if no fresh oranges no time taken to rote.
         if(countFresh == 0) return 0;
         int count = 0;
-        
-        while(!queue.isEmpty()){
-            count++;
-            
-            int size = queue.size();
-            for(int i = 0; i < size; i++){
-                Pair top = queue.poll();
+        int size = queue.size();
 
-                for(int k = 0; k < 4; k++){
-                    int dirOne = top.first + di[k];
-                    int dirTwo = top.second + dj[k];
-                    if(isSafe(grid, dirOne, dirTwo, rows, cols)){
-                        queue.add(new Pair(dirOne, dirTwo));
-                        grid[dirOne][dirTwo] = 2;
-                        countFresh--;
-                    }
+        // count levels using bfs traversal in count which gives minutes to rote all oranges.
+        while(!queue.isEmpty()){
+            size--;
+            Pair top = queue.poll();
+
+            for(int k = 0; k < 4; k++){
+                int dirOne = top.first + di[k];
+                int dirTwo = top.second + dj[k];
+                if(isSafe(grid, dirOne, dirTwo, rows, cols)){
+                    queue.add(new Pair(dirOne, dirTwo));
+                    grid[dirOne][dirTwo] = 2;
+                    countFresh--;
                 }
             }
+            if(size == 0){
+                count++;
+                size = queue.size();
+            }
+            
         }
         return countFresh == 0 ? count - 1 : -1;
         
@@ -115,5 +121,7 @@ class Solution {
     
     private boolean isSafe(int[][] grid, int i, int j, int m, int n){
         return (i >= 0 && i < m) && (j >= 0 && j < n) && (grid[i][j] == 1);
-    }   
+    }
+    
+    
 }
