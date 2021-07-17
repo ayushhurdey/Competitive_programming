@@ -90,3 +90,41 @@ class Solution
   detect a cycle if there is any back edge from any node to any of its ancestor.
 */
 
+
+
+
+// using only one array instead of two visited arrays:
+class Solution 
+{
+    //Function to detect cycle in a directed graph.
+        public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        // code here
+        int visited[] = new int[V];
+        
+        for(int i = 0 ; i < V; i++){
+            if(visited[i] == 0)
+                if(cycleDirected(adj, 0, visited))
+                    return true; 
+        }
+        return false;
+    }
+    
+    private boolean cycleDirected(ArrayList<ArrayList<Integer>> adjList, int start, int[] visited){
+       // 2 -> for visited in current DFS
+       // 1 -> visited but not visited in current DFS
+       // 0 -> not visited at all
+        visited[start] = 2;
+
+        for(int adj: adjList.get(start)){
+          if(visited[adj] == 0){                   // if not at all visited
+            return dfs(adjList, adj, visited);
+          }
+          else if(visited[adj] == 2)              // if visited in current DFS, then it is a cycle.
+            return true;
+        }
+        visited[start] = 1;
+        return false;
+    }
+}
+
