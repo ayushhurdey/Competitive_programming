@@ -67,6 +67,16 @@ class Solution {
 }
 
 
+// Iterative version:
+
+public TreeNode searchBST(TreeNode root, int val) {
+    while(root != null && root.val != val){
+        root = root.val > val ? root.left : root.right;
+    }
+    return root;
+}
+
+
 /*
 APPROACH: Decision is taken at every node which direction to go.
           if the required node is in the tree it will be finded
