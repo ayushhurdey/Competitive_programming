@@ -123,4 +123,9 @@ public static int hammingWeight(int n) {
     n!=0 in the while condition and we cannot use n>0
     because the input 2147483648 would correspond to -2147483648 in java and the code
     would not enter the while if the condition is n>0 for n=2147483648.
+    
+    
+    REFER: 
+    https://stackoverflow.com/questions/2811319/difference-between-and
+    https://stackoverflow.com/questions/19058859/what-does-mean-in-java/19058871
 */
