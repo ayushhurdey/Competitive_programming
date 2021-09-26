@@ -94,3 +94,71 @@ APPROACH:
    After all empty the stack by putting -1 at all the indexes popped from
    the stack in the result array.
 */
+
+
+
+
+
+
+
+
+/*
+
+503. Next Greater Element II
+Medium
+
+Given a circular integer array nums (i.e., the next element
+of nums[nums.length - 1] is nums[0]), return the next greater 
+number for every element in nums.
+
+The next greater number of a number x is the first greater 
+number to its traversing-order next in the array, which means
+you could search circularly to find its next greater number. 
+If it doesn't exist, return -1 for this number.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,1]
+Output: [2,-1,2]
+Explanation: The first 1's next greater number is 2; 
+The number 2 can't find next greater number. 
+The second 1's next greater number needs to search circularly, which is also 2.
+
+Example 2:
+
+Input: nums = [1,2,3,4,3]
+Output: [2,3,4,-1,4]
+
+ 
+
+Constraints:
+
+    1 <= nums.length <= 10^4
+    -10^9 <= nums[i] <= 10^9
+*/
+
+
+class Solution {
+    public int[] nextGreaterElements(int[] arr) {
+        Deque<Integer> stack = new ArrayDeque<Integer>();     // prefer Deque<> in place of Stack<> to give significant performance increase
+        int n = arr.length;
+        int[] result = new int[n];
+        Arrays.fill(result, -1);
+        
+        for(int i = 0; i < 2 * n; i++){
+            while(!stack.isEmpty() && arr[stack.peek()] < arr[i % n]){
+                result[stack.pop()] = arr[i % n];
+            }
+            stack.push(i % n);
+        }
+                
+        return result;
+    }
+}
+
+// O(N), O(N) solution
+
+// https://stackoverflow.com/questions/12524826/why-should-i-use-deque-over-stack
+// https://stackoverflow.com/a/61357726/15348175
