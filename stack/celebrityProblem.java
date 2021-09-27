@@ -107,3 +107,28 @@ APPROACH:  This is a elimination based approach. We eliminate
           - return potential celebrity
 */
     	
+
+
+
+// Without Stack in O(1) space
+
+class Solution{ 
+    //Function to find if there is a celebrity in the party or not.
+    int celebrity(int M[][], int n)
+    {
+    	// code here 
+    	int celebrity = 0;
+    	
+    	for(int i = 0; i < n; i++){
+    	    if(M[celebrity][i] == 1)
+    	        celebrity = i;
+    	}
+    	
+    	for(int i = 0; i < n; i++){
+    	    if(celebrity != i && (M[celebrity][i] == 1 || M[i][celebrity] == 0))
+    	        return -1;
+    	}
+    	
+    	return celebrity;
+    }
+}
