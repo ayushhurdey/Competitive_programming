@@ -97,7 +97,7 @@ class Solution {
   public boolean isValid(String s) {
 
     // Initialize a stack to be used in the algorithm.
-    Stack<Character> stack = new Stack<Character>();
+    Deque<Character> stack = new ArrayDeque<Character>();
 
     for (int i = 0; i < s.length(); i++) {
       char c = s.charAt(i);
@@ -121,4 +121,31 @@ class Solution {
     // If the stack still contains elements, then it is an invalid expression.
     return stack.isEmpty();
   }
+}
+
+
+
+
+
+
+// SOLUTION 3: Best solution in both time and space
+
+class Solution {
+    public boolean isValid(String s) {
+        if(s.length() == 0 || s.length() == 1)
+            return false;
+  
+        Deque<Character> stack = new ArrayDeque<Character>();
+        for (char c : s.toCharArray()) {
+            if (c == '(')
+                stack.push(')');
+            else if (c == '{')
+                stack.push('}');
+            else if (c == '[')
+                stack.push(']');
+            else if (stack.isEmpty() || stack.pop() != c)
+                return false;
+        }
+        return stack.isEmpty();
+    }
 }
