@@ -1,2 +1,6 @@
-# if (Competitive && Programming){<br />&emsp; System.out.println("Competitive Programmer");<br />}
-Contains solved Competitive Programming problems from various platforms..
+```java
+if (Competitive && Programming){     
+     System.out.println("Competitive Programmer"); 
+} 
+```
+Contains solved `Competitive Programming` problems from various platforms...
