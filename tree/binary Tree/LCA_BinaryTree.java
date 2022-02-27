@@ -184,3 +184,49 @@ class Solution {
 	  3. a -> non-null & b -> null        => Means it cannot be LCA but have either p or q as it's descendant
 	  4. a -> non-null & b -> non-null    => Means it is LCA
  */
+
+
+
+ /**
+ LeetCode #1644
+
+ 	Constraints: 
+	=> The number of nodes in the tree is in the range [2, 105].
+    => -10^9 <= Node.val <= 10^9
+    => All Node.val are unique.
+    => p != q
+    => p and q may or may not exist in the tree.
+
+  */
+
+  class Solution {
+    int count = 0;
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        TreeNode LCA = LCA(root, p, q);
+        return count == 2 ? LCA : null; 
+    }
+    
+    TreeNode LCA(TreeNode root, TreeNode p, TreeNode q){
+        if(root == null) return null;
+
+        TreeNode left = LCA(root.left, p, q);
+        TreeNode right = LCA(root.right, p, q);
+        
+        if(root == p || root == q){
+            count++;
+            return root;
+        }
+        if(left != null && right != null)
+            return root;
+        
+        return left == null ? right : left;
+    }
+}
+
+
+/**
+  We can count the number we have after iterating the whole tree in the counter.
+  If that counter equals 2 that means both nodes are present, else any one 
+  or both are missing.
+ */
