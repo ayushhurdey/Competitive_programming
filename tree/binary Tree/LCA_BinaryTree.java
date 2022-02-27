@@ -119,3 +119,68 @@ class Tree
   and hence a null pointer exception,
   which is wrong for sure.
 */
+
+
+
+
+/* Short and Crisp Solution:
+Leetcode #236
+Works only if it is guaranteed that both p & q exists in the tree.
+ 
+Constraints:
+    => The number of nodes in the tree is in the range [2, 105].
+    => -10^9 <= Node.val <= 10^9
+    => All Node.val are unique.
+    => p != q
+    => p and q will exist in the tree.
+
+*/
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        /**
+		 When you have searched the whole left tree, but couldn't find either p or q.
+		 In that case if on the right side you find either of p or q first, that return that as
+		 LCA, there is no need to search down that node, because anyway the one that is found first
+		 is going to be the LCA.
+		 */
+		if(root.val == p.val || root.val == q.val)
+            return root;                   // Found LCA
+        
+        if(root.left == null && root.right == null)
+            return null;
+        
+        TreeNode left = null, right = null;
+        
+        if(root.left != null)
+            left = lowestCommonAncestor(root.left, p, q);
+        if(root.right != null)
+            right = lowestCommonAncestor(root.right, p, q);
+        if(left != null && right != null)              
+            return root;                    // Found LCA
+        
+        return left == null ? right : left;   // executes case 1, 2 & 3. 
+    }
+}
+
+
+/**
+	We find Lowest common ancestor by a node that get both non 
+	null values returned to it from it's descendant nodes.
+
+	In all we get 4 case here for different values returned to a node from it's descendant nodes:
+	  1. Both null.                       => Means it cannot be LCA at all
+	  2. a -> null & b -> non-null        => Means it cannot be LCA but have either p or q as it's descendant
+	  3. a -> non-null & b -> null        => Means it cannot be LCA but have either p or q as it's descendant
+	  4. a -> non-null & b -> non-null    => Means it is LCA
+ */
