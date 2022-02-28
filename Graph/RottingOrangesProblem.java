@@ -91,7 +91,7 @@ class Solution {
         
         // if no fresh oranges no time taken to rote.
         if(countFresh == 0) return 0;
-        int count = 0;
+        int minutes = 0;
         int size = queue.size();
 
         // count levels using bfs traversal in count which gives minutes to rote all oranges.
@@ -109,12 +109,12 @@ class Solution {
                 }
             }
             if(size == 0){
-                count++;
+                minutes++;
                 size = queue.size();
             }
             
         }
-        return countFresh == 0 ? count - 1 : -1;
+        return countFresh == 0 ? minutes - 1 : -1;
         
     }
     
