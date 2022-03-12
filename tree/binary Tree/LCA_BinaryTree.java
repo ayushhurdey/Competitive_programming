@@ -157,7 +157,7 @@ class Solution {
 		if(root.val == p.val || root.val == q.val)
             return root;                   // Found LCA
         
-        if(root.left == null && root.right == null)
+        if(root.left == null && root.right == null) // if leaf
             return null;
         
         TreeNode left = null, right = null;

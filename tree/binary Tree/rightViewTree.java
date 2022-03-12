@@ -64,3 +64,61 @@ class Tree{
         }
     }
 }
+
+
+
+// DFS way of right view of Binary Tree - Simpler to understand.
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    List<Integer> rightViewList = new ArrayList<>();
+    Map<Integer, Integer> map = new HashMap<>();
+    int maxLevel = 0;
+    
+    public void getRightSideView(TreeNode root, int level){
+        if(root == null)
+            return;
+        
+        // updating map at each node moving left to right at a particlar level.
+        map.put(level, root.val);  
+        maxLevel = Math.max(maxLevel, level);  //  keeping maxLevel to use in list to add elements from map
+        
+        getRightSideView(root.left, level+1);   // going left first
+        getRightSideView(root.right, level+1);  // then going to right so that rightmost is updated at the last.
+    }
+    
+    public List<Integer> rightSideView(TreeNode root) {
+        // Write your code here
+        if(root == null)
+            return new ArrayList<>();
+
+        getRightSideView(root, 0);
+        for(int i = 0; i <= maxLevel; i++){
+            rightViewList.add(map.get(i));    
+        }
+
+        return rightViewList;
+    }
+}
+
+
+/* Approach:
+    While visiting each level again and again from left to right
+    Keep updating the value corresponding to each level.
+    Finally the map will give the rightmost nodes at each level
+    in the binary tree.
+*/
