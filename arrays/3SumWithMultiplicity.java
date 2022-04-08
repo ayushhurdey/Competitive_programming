@@ -53,6 +53,7 @@ Constraints:
         long result = 0;
         for(int i : arr) count[i]++;
         
+        // here i, j, k are the actual values in the array
         for(int i = 0; i <= 100; i++){
             for(int j = i; j <= 100; j++){
                 int k = target - i - j;
@@ -77,7 +78,7 @@ Constraints:
 /**
 
 APPROACH: 
-
+   i < j < k  : It refers that i, j, should not refer to the same number in the array
 
   case 1 : (i == j == k) ->
               result += nC3 = n*(n-1)*(n-2)/6
