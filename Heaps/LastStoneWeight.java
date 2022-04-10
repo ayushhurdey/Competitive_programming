@@ -51,6 +51,8 @@ class Solution {
                 return b - a; 
             }
         });
+        //PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());   // this also works
+
         for(int i = 0; i < n; i++)
             maxHeap.add(stones[i]);
         
