@@ -68,3 +68,66 @@ If at any point of time i exceeds min length string in array, it
 means length of common prefix cannot be greater than that particular
 string with min length string in the array.
 */
+
+
+
+/**
+LEETCODE
+
+14. Longest Common Prefix
+Easy
+
+Write a function to find the longest common prefix 
+string amongst an array of strings.
+
+If there is no common prefix, return an empty string "".
+
+ 
+
+Example 1:
+
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+Example 2:
+
+Input: strs = ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+
+ 
+
+Constraints:
+
+    1 <= strs.length <= 200
+    0 <= strs[i].length <= 200
+    strs[i] consists of only lower-case English letters.
+
+
+ */
+
+
+ // Solution: O(nlogn)
+
+ class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        int arrLen = strs.length;
+        
+        if(strs.length == 0 || strs[0] == null)
+            return "";
+        
+        Arrays.sort(strs);
+        String first = strs[0];
+        String last = strs[arrLen - 1];
+        int counter = 0;
+        
+        while(counter < first.length()){
+            if(first.charAt(counter) == last.charAt(counter))
+                counter++;
+            else
+                break;
+        }
+        
+        return counter == 0 ? "" : first.substring(0, counter);
+    }
+}
