@@ -79,3 +79,67 @@ Whenever counter = 0   => level is over.
       print from right to left.
   counter = size(Queue); 
 */
+
+
+
+
+//Another Similar Solution, with slightly less Time complexity
+// LEETCODE: 103
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+
+
+
+class Solution {
+    
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {  
+        List<List<Integer>> listOfList = new ArrayList<>();
+        
+        if(root == null)
+            return listOfList;
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        boolean leftToRight = true; 
+        int size = 1;
+        List<Integer> list = new ArrayList<>();
+        
+        while(!queue.isEmpty()){           
+            TreeNode top = queue.poll();
+            
+            if(leftToRight)
+                list.add(top.val);
+            else
+                list.add(0, top.val);
+            size--;
+            
+            if(top.left != null)
+                queue.add(top.left);
+            if(top.right != null)
+                queue.add(top.right);
+            
+            if(size == 0){
+                listOfList.add(List.copyOf(list));
+                leftToRight = !leftToRight;
+                size = queue.size();
+                list.clear();
+            }   
+        }
+        return listOfList;
+    }
+}
